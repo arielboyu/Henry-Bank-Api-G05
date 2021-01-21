@@ -160,3 +160,5 @@ node_modules/crypto-random-string/readme.md
 node_modules/debug/.coveralls.yml
 node_modules/debug/.eslintrc
 node_modules/debug/.npmignore
+.env
+.env
