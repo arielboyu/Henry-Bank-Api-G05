@@ -16,10 +16,13 @@ server.get('/', (req, res,) => {
 
 });
 server.post("/", (req, res) => {
-    const {name,email} = req.body
+    const {name,email, mobile, adress, birthdate} = req.body
        User.create({
         name,
-        email
+        email,
+        mobile,
+        adress,
+        birthdate
         })
             .then((newUser)=>{
                 res.status(201)
