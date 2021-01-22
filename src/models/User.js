@@ -4,6 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('user', {
+
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,16 +20,31 @@ module.exports = (sequelize) => {
     },
     mobile:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
     },
     adress:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
     },
     birthdate:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
     },
-
-  });
-};
+    photoURL: {
+      type: DataTypes.STRING(1000),
+      allowNull: true
+    },
+    typeDNI: {
+      type: DataTypes.ENUM("dni","pasaporte"),
+      allowNull: true,
+    },
+    DNI: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    password: {
+    type: DataTypes.STRING,
+    allowNull: true
+    }
+  })
+}
