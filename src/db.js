@@ -40,6 +40,8 @@ User.hasMany(Account);
 User.hasMany(Movement);
 Account.hasMany(Movement);
 
+User.belongsToMany(User, {as:"contact", through:"contactList"}) 
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
