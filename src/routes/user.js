@@ -3,6 +3,7 @@ const { User } = require('../db.js');
 const multer = require('multer')
 //obtener todos los usuarios
 server.get('/', (req, res,) => {
+  if(req.user){
   return User.findAll({
     include:
       { all: true }
@@ -10,7 +11,10 @@ server.get('/', (req, res,) => {
     .then(users => {
       res.send(users);
     })
-
+  }
+  else{
+    res.sendStatus(401)
+  }
 });
 
 //crear un usuario

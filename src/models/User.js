@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('user', {
+  const User = sequelize.define("user",{
 
     email: {
       type: DataTypes.STRING,
@@ -76,4 +76,8 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM("admin", "user")
     },
   })
-}
+  User.prototype.compare = function (pass) {
+    return bcrypt.compareSync(pass, this.password);
+  };
+  return User;
+};
