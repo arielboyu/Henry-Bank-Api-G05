@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { User } = require('../db.js');
+const { User, ContactList } = require('../db.js');
 const multer = require('multer')
 //obtener todos los usuarios
 server.get('/', (req, res,) => {
@@ -51,6 +51,12 @@ server.put('/:id', (req, res) => {
       email,
       mobile,
       adress,
+      password,
+      street,
+      streetNumber,
+      city,
+      province,
+      country
     },
     { returning: true, where: { id } }
   ).then(updatedUser => {
@@ -118,6 +124,22 @@ server.put('/alta/:id', upload.single('file'), async (req, res) => {
   }).catch(e => {
     res.status(400).json({ MjsError: "Llene los campos obligatorios" })
   })
+});
+
+//crear un contacto
+server.post("/contacts/:id", async (req, res, next) => {
+  const {id} = req.params;
+  const {contactId } = req.body;
+   
+  try {
+    const result = await ContactList.create({
+      userId: id,
+      contactId
+    });
+    res.status(201).json(result);
+  } catch (error) {
+    next(error);
+  }
 });
 
 

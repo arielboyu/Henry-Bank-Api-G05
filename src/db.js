@@ -28,7 +28,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const{ User, Account, Movement} = sequelize.models; 
+const { User, Account, Movement, ContactList  } = sequelize.models;
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 /* const { User } = sequelize.models; */
@@ -40,7 +40,19 @@ User.hasMany(Account);
 User.hasMany(Movement);
 Account.hasMany(Movement);
 
-User.belongsToMany(User, {as:"contact", through:"contactList"}) 
+//Con esta relacion se crea la tabla intermedia contactLists
+User.belongsToMany(User, {
+  as: "hasContact",
+  through: "ContactList",
+  primaryKey: 'userId'
+})
+
+User.belongsToMany(User, {
+  as: "isContact",
+  through: "ContactList",
+  foreignKey: 'contactId'
+})
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
