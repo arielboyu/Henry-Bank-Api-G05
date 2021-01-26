@@ -7,10 +7,6 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM("payment", "collection"),
       allowNull: false,
     },
-    date:{
-      type:DataTypes.DATE,
-      allowNull:false
-    },
     description:{
       type:DataTypes.TEXT,
       allowNull:false
