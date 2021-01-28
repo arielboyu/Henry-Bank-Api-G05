@@ -22,14 +22,9 @@
     "mysql2": "^2.2.5",
     "nodemailer": "^6.4.17",
     "nodemon": "^2.0.7",
-<<<<<<< HEAD
-    "sequelize": "^6.4.0",
-    "xoauth2": "^1.2.0"
-=======
     "passport": "^0.4.1",
     "passport-http-bearer": "^1.0.1",
     "passport-local": "^1.0.0",
     "sequelize": "^6.4.0"
->>>>>>> master
   }
 }

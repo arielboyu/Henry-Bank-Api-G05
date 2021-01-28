@@ -1,17 +1,18 @@
 const server = require('express').Router();
 const { User, ContactList } = require('../db.js');
 const multer = require('multer');
+
 //obtener todos los usuarios
 server.get('/', (req, res) => {
-	if (req.user) {
+	/* if (req.user) { */
 		return User.findAll({
 			include : { all: true }
 		}).then((users) => {
 			res.send(users);
 		});
-	} else {
+/* 	} else { */
 		res.sendStatus(401);
-	}
+	/* } */
 });
 
 //crear un usuario
@@ -92,8 +93,8 @@ server.post('/:id/passwordReset', async (req, res) => {
 });
 
 //DAR DE ALTA UN USER
-const upload = multer();
-server.put('/alta/:id', upload.single('file'), async (req, res) => {
+/* const upload = multer(); */
+server.put('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 	const { id } = req.params;
 	const {
 		firstName,
@@ -106,7 +107,7 @@ server.put('/alta/:id', upload.single('file'), async (req, res) => {
 		country,
 		birthdate,
 		typeDNI,
-		photoURL,
+/* 		photoURL, */
 		DNI
 	} = req.body; //Valida que esten todos los campos completos
 
@@ -134,12 +135,13 @@ server.put('/alta/:id', upload.single('file'), async (req, res) => {
 			typeDNI,
 			DNI
 		},
-		{ returning: true, where: { id } }
+		{/*  returning: true, */ where: { id } }
 	)
 		.then((updatedUser) => {
 			res.status(201).json(updatedUser);
 		})
 		.catch((e) => {
+      console.log("ERROR >>>>", e)
 			res.status(400).json({ MjsError: 'Llene los campos obligatorios' });
 		});
 });
