@@ -27,7 +27,6 @@ module.exports = (sequelize) => {
       },
     typeDNI: {
       type: DataTypes.ENUM("dni", "pasaporte"),
-      unique: true
     },
     DNI: {
       type: DataTypes.STRING,
