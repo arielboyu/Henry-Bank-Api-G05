@@ -16,13 +16,14 @@ server.get('/', (req, res,) => {
 //crear un usuario
 server.post("/", async (req, res, next) => {
 
-  const { email, password } = req.body.newUser;
+  const { email, password } = req.body;
 
     if (!email || !password)
     return  res.status(400).json({ Error: "Must fill all the fields" });
 
   try {
-    const result = await User.create(req.body.newUser);
+    console.log("BODY >>>>", req.body)
+    const result = await User.create(req.body);
     res.status(201).json(result);
   } catch (error) {
     next(error);
