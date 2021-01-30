@@ -36,7 +36,6 @@ const { User, Account, Movement} = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 User.hasMany(Account);
-
 User.hasMany(Movement);
 Account.hasMany(Movement);
 
