@@ -111,16 +111,7 @@ server.put('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 		DNI
 	} = req.body; //Valida que esten todos los campos completos
 
-	/* if (!firstName || !lastName || !mobile ||  !street || !streetNumber || !city || !province || !country || !birthdate || !typeDNI || !DNI )
-  return  res.status(400).json({ Error: "Must fill all the fields" }); */ //Procesar archivo de imagen recibido
-	/* const { file } = req;
-  if (file.detectedFileExtension != ".jpg" && file.detectedFileExtension != ".png") next(new Error("Invalid file type"));
-  const fileName = 'userimg' + '_' + Date.now() + file.detectedFileExtension;
-  var img = `http://localhost:3001/img-user/${fileName}`;//definiendo la url de la imagen que se va a guardar en la base de datos
-  //guardar archivo de imagen en el servidor 
-  const pipeline = promisify(require("stream").pipeline);
-  await pipeline(file.stream, fs.createWriteStream(`${__dirname}/../upload/img-user/${fileName}`)).catch(e => { console.log(e) }); */
-	User.update(
+	 await User.update(
 		{
 			firstName,
 			lastName,
@@ -131,16 +122,15 @@ server.put('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 			province,
 			country,
 			birthdate,
-			/* photoURL:  img, */
 			typeDNI,
 			DNI
 		},
-		{/*  returning: true, */ where: { id } }
+		{ where: { id } }
 	)
-		.then((updatedUser) => {
-			res.status(201).json(updatedUser);
-		})
-		.catch((e) => {
+	await Account.findByPk(id)
+	.then((updatedUser)=>{
+	res.status(201).json(updatedUser)
+	}).catch((e) => {
       console.log("ERROR >>>>", e)
 			res.status(400).json({ MjsError: 'Llene los campos obligatorios' });
 		});

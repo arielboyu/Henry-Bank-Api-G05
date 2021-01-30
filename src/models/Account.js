@@ -3,17 +3,21 @@ const {DataTypes} = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('account', {
-    type: {
+    email:{
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
-    number:{
-      type:DataTypes.INTEGER,
-      allowNull:false
+    DNI:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    tipo: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     balance:{
       type:DataTypes.INTEGER,
-      allowNull:false
+      allowNull: false
     }
   });
 };

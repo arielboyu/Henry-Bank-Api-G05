@@ -2,8 +2,9 @@ const { Router } = require('express');
 // import all routers;
 const user =require("./user.js")
 const emailRouter = require('../controllers/email');
-
+const account = require("./account")
 const auth = require("./auth")
+const  movement =require ("./movement.js")
 
 const router = Router();
 
@@ -13,5 +14,6 @@ const router = Router();
 router.use('/user', user);
 router.use('/email', emailRouter);
 router.use('/auth', auth);
-
+router.use('/account', account)
+router.use('/movement', movement)
 module.exports = router;
