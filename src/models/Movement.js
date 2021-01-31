@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('movement', {
     type: {
-      type: DataTypes.ENUM("payment", "collection"),
+      type: DataTypes.ENUM("envio", "recibo"),
       allowNull: false,
     },
     description:{
@@ -15,16 +15,8 @@ module.exports = (sequelize) => {
       type:DataTypes.TEXT,
       allowNull:false
     },
-    sender:{
-      type:DataTypes.STRING,
-      allowNull:false
-    },
-    sender:{
-      type:DataTypes.STRING,
-      allowNull:false
-    },
-    receiver:{
-      type:DataTypes.STRING,
+    contactId:{
+      type:DataTypes.TEXT,
       allowNull:false
     },
   });

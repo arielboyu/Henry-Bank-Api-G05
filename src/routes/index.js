@@ -5,6 +5,7 @@ const emailRouter = require('../controllers/email');
 const account = require("./account")
 const auth = require("./auth")
 const  movement =require ("./movement.js")
+const  contact = require ("./contact")
 
 const router = Router();
 
@@ -16,4 +17,5 @@ router.use('/email', emailRouter);
 router.use('/auth', auth);
 router.use('/account', account)
 router.use('/movement', movement)
+router.use('/contact', contact)
 module.exports = router;
