@@ -36,6 +36,8 @@ const { User, Account, Movement, Contact} = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 User.hasMany(Account);
+Account.belongsTo(User);
+
 User.hasMany(Movement);
 Account.hasMany(Movement);
 
@@ -60,5 +62,7 @@ module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, 
   User,
-  Contact     // para importart la conexión { conn } = require('./db.js');
+  Contact,
+  Account,
+  Movement     // para importart la conexión { conn } = require('./db.js');
 };
