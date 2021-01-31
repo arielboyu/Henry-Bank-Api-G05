@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { User, ContactList } = require('../db.js');
+const { User, Contact } = require('../db.js');
 const multer = require('multer');
 
 //obtener todos los usuarios
@@ -138,12 +138,12 @@ server.put('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 
 //crear un contacto
 server.post('/contacts/:id', async (req, res, next) => {
-	const { id } = req.params;
+	const {id } = req.params;
 	const { contactId } = req.body;
 
 	try {
-		const result = await ContactList.create({
-			userId    : id,
+		const result = await Contact.create({
+			userId: id,
 			contactId
 		});
 		res.status(201).json(result);
