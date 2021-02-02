@@ -55,8 +55,8 @@ server.post("/:id", async (req, res) => {
       res.status(400).send({ msg: "El usuario ya tiene una cuenta" })
     }
   }
-  catch {
-    res.status(400).json(e)
+  catch(error) {
+    res.status(400).json(error)
   }
 });
 
@@ -79,7 +79,7 @@ server.get('/:email/:DNI', (req, res,) => {
 server.put('/:id', async (req, res) => {
   const { id } = req.params;
   let { contactId, monto, tipo } = req.body;
- 
+
   const sender = await Account.findOne({     //Busca la cuenta de quien envia.
     where: { userId: id, tipo }
   })
@@ -91,7 +91,7 @@ server.put('/:id', async (req, res) => {
   )
 
   const reciber = await Account.findOne({    // Busca la cuenta de quien recibe.
-    where: { userId: contactId, tipo }
+    where: { userId: contactId, tipo }       // tipo es dolares o pesos
   })
   await Account.update(                      // Le suma el Monto.
     {
@@ -102,13 +102,31 @@ server.put('/:id', async (req, res) => {
 
   await Account.findOne({         //Busca la cuenta actualizada de quien envió.
     where: { userId: id, tipo }
-    })
+  })
     .then((updatedUser) => {
       res.status(201).json(updatedUser) //responde con la cuenta actualizada.
     }).catch(e => {
       res.status(400).json({ MjsError: "Llene los campos obligatorios" })
     })
 });
+
+
+//recargar dinero.
+server.put('/recarga/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    let { monto } = req.body;
+    const account = await Account.findByPk(id); //Busca la cuenta por ID.
+    await account.update({
+      balance: (Number(account.balance) + Number(monto))  // Le suma el Monto.
+    })
+    res.status(200).json(account); // Devuelve la cuenta actualizada.
+  }
+  catch(error) {
+    next(error)
+  }
+})
+
 
 
 module.exports = server;
