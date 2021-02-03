@@ -1,5 +1,5 @@
 const server = require('express').Router();
-const { User } = require('../db.js');
+const { User,Account } = require('../db.js');
 const multer = require('multer');
 
 //obtener todos los usuarios
