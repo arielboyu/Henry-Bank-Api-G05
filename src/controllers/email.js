@@ -1,5 +1,6 @@
 const server = require('express').Router();
 require('dotenv').config();
+const { User, Validation } = require('../db.js');
 const nodemailer = require('nodemailer');
 /* const xoauth2 = require('xoauth2'); */
 
@@ -8,6 +9,8 @@ server.post('/', async (req, res, next) => {
 const {email} = req.body;
 
 const { GMAIL_USER, GMAIL_PASS} = process.env ;
+
+const validationNumber = Math.floor(1000 + Math.random() * 9000);
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -27,9 +30,17 @@ let mailOptions = {
   from: 'TreeBANK <treehenrybank@gmail.com>',
   to: email,
   subject: 'Confirme su email',
-  text: 'codigo de seguridad: 113056',
-  html: `<h3> codigo de seguridad: 113056</h3>`
+  text: 'codigo de seguridad',
+  html: `<h3> Código de seguridad: ${validationNumber}</h3>`
 };
+
+try {
+  const user = await User.findOne({where: {email}});
+  const result = await Validation.create({validationNumber, userId: user.id});
+  res.status(201).json(result);
+} catch (error) {
+  next(error);
+}
 
 
 transporter.sendMail(mailOptions, function(err, data) {

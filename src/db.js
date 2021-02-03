@@ -28,7 +28,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { User, Account, Movement, Contact} = sequelize.models;
+const { User, Account, Movement, Contact, Validation} = sequelize.models;
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 /* const { User } = sequelize.models; */
@@ -40,6 +40,8 @@ Account.belongsTo(User);
 
 User.hasMany(Movement);
 Account.hasMany(Movement);
+
+User.hasOne(Validation);
 
 //Con esta relacion se crea la tabla intermedia contactLists
  Contact.belongsTo(User)
@@ -64,5 +66,6 @@ module.exports = {
   User,
   Contact,
   Account,
-  Movement     // para importart la conexión { conn } = require('./db.js');
+  Movement,
+  Validation     // para importart la conexión { conn } = require('./db.js');
 };

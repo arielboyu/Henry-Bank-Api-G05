@@ -6,6 +6,7 @@ const account = require("./account")
 const auth = require("./auth")
 const  movement =require ("./movement.js")
 const  contact = require ("./contact")
+const validation = require ("./validation")
 
 const router = Router();
 
@@ -18,4 +19,5 @@ router.use('/auth', auth);
 router.use('/account', account)
 router.use('/movement', movement)
 router.use('/contact', contact)
+router.use('/validation', validation)
 module.exports = router;
