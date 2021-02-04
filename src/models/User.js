@@ -74,6 +74,9 @@ module.exports = (sequelize) => {
     role: {
       type: DataTypes.ENUM("admin", "user")
     },
+    cvu: {
+      type: DataTypes.TEXT,
+    }
   })
   User.prototype.compare = function (pass) {
     return bcrypt.compareSync(pass, this.password);

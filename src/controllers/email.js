@@ -20,7 +20,7 @@ const transporter = nodemailer.createTransport({
     pass: 'epA6ugrj4pfyCpu', 
     clientId: '461410365933-dnta1kqb2r49249ibmtl6oosfn997j8l.apps.googleusercontent.com',
     clientSecret: 'jhd3cCHUMbKlV9rRBKO4HYbX',
-    refreshToken: '1//04VxHShDcfrl7CgYIARAAGAQSNwF-L9IrV_RrpBUVSqetwHbxD_5SLZHxg59WV22YJEk7A0nmDexyAlyOkAPp1INLZ_8BCjPRO84',
+    refreshToken: '1//04LwUDrbbDXeQCgYIARAAGAQSNwF-L9IrFL6xElUPqaE61c_pjMC34KT0Pf389rR44cALPmj1ZZsZmJXwIajVJuzMzHsQcbGZm0M',
     
   }
 });

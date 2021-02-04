@@ -39,9 +39,13 @@ server.post("/register", async function (req, res, next) {
 
 server.post("/login", function (req, res, next) {
   passport.authenticate("local", function (err, user) {
+  //  console.log("USER", user)
+  const userData = {token: jwt.sign(user, "secreto"),
+                    user}
     if (err) return next(err);
     else if (!user) return res.sendStatus(401);
-    else return res.send(jwt.sign(user, "secreto"));
+    else return res.send(userData);
+
   })(req, res, next);
 });
 
