@@ -34,7 +34,11 @@ server.post("/", async (req, res, next) => {
 server.get('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
-		const result = await User.findByPk(id);
+		const result = await User.findByPk(id, 
+      {include :{
+        model: Account,
+      }})
+    ;
 		if (result) return res.json(result);
 		return res.status(404).json({ Error: 'User not found' });
 	} catch (error) {
