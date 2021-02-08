@@ -21,7 +21,11 @@ server.get('/', (req, res, next) => {
 //crear cuenta a un usuario
 server.post("/:id", async (req, res) => {
   const { id } = req.params;
+<<<<<<< HEAD
+  //const { balance } = req.body;
+=======
   // const { balance } = req.body;
+>>>>>>> ad8f1b25597a06982f275b99c6549ee768a0215c
   const user = await User.findByPk(id)
 
   const CVUars = "222222000022222"
@@ -43,17 +47,23 @@ server.post("/:id", async (req, res) => {
       await Account.create({
         userId: id,
         email: user.email,
-        DNI: user.DNI,
         tipo: "pesos",
+<<<<<<< HEAD
+        balance: 0,
+=======
         balance:500,
+>>>>>>> ad8f1b25597a06982f275b99c6549ee768a0215c
         cvu: CVU
       })
       await Account.create({
         userId: id,
         email: user.email,
-        DNI: user.DNI,
         tipo: "dolares",
+<<<<<<< HEAD
+        balance: 0,
+=======
         balance:500,
+>>>>>>> ad8f1b25597a06982f275b99c6549ee768a0215c
         cvuUS: CVUUSD
       })
       const cuentas = await Account.findAll({ //Se buscan las 2 cuentas creadas.
@@ -73,12 +83,24 @@ server.post("/:id", async (req, res) => {
 
 
 //identificar un usuario con su cuenta
-server.get('/:email/:DNI', (req, res,) => {
-  const { email, DNI } = req.params
+server.get('/:email', (req, res,) => {
+  const { email } = req.params
   return Account.findOne({
     where: {
       email,
-      DNI
+    }
+  })
+    .then(cuenta => {
+      res.json(cuenta);
+    })
+})
+
+//Obtener todas las cuentas de un usuario
+server.get('/all/:email', (req, res,) => {
+  const { email } = req.params
+  return Account.findAll({
+    where: {
+      email,
     }
   })
     .then(cuenta => {
