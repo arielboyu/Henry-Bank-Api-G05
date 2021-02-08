@@ -21,7 +21,7 @@ server.get('/', (req, res, next) => {
 //crear cuenta a un usuario
 server.post("/:id", async (req, res) => {
   const { id } = req.params;
-  const { balance } = req.body;
+  // const { balance } = req.body;
   const user = await User.findByPk(id)
 
   const CVUars = "222222000022222"
@@ -45,7 +45,7 @@ server.post("/:id", async (req, res) => {
         email: user.email,
         DNI: user.DNI,
         tipo: "pesos",
-        balance,
+        balance:500,
         cvu: CVU
       })
       await Account.create({
@@ -53,7 +53,7 @@ server.post("/:id", async (req, res) => {
         email: user.email,
         DNI: user.DNI,
         tipo: "dolares",
-        balance,
+        balance:500,
         cvuUS: CVUUSD
       })
       const cuentas = await Account.findAll({ //Se buscan las 2 cuentas creadas.
