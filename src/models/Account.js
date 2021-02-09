@@ -7,10 +7,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    DNI:{
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     tipo: {
       type: DataTypes.STRING,
       allowNull: false
@@ -18,6 +14,14 @@ module.exports = (sequelize) => {
     balance:{
       type:DataTypes.INTEGER,
       allowNull: false
-    }
+    },
+    cvu:  {
+      type: DataTypes.STRING,
+      unique: true
+    },
+    cvuUS:  {
+      type: DataTypes.STRING,
+      unique: true
+    },
   });
 };

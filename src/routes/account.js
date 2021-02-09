@@ -21,8 +21,17 @@ server.get('/', (req, res, next) => {
 //crear cuenta a un usuario
 server.post("/:id", async (req, res) => {
   const { id } = req.params;
-  const { balance } = req.body;
+  //const { balance } = req.body;
   const user = await User.findByPk(id)
+
+  const CVUars = "222222000022222"
+	const CVUusd = "333333111133333"
+	const cvus = []
+	const numerosRandom = Math.ceil(Math.random()*10000000)
+	!cvus.includes(numerosRandom)? cvus.push(numerosRandom): generar()
+	const CVU = CVUars + cvus
+	const CVUUSD = CVUusd + cvus
+
   try {
     const userAccount = await Account.findOne({ //Busca una cuenta del usuario.
       where: {
@@ -34,16 +43,16 @@ server.post("/:id", async (req, res) => {
       await Account.create({
         userId: id,
         email: user.email,
-        DNI: user.DNI,
         tipo: "pesos",
-        balance
+        balance:500,
+        cvu: CVU
       })
       await Account.create({
         userId: id,
         email: user.email,
-        DNI: user.DNI,
         tipo: "dolares",
-        balance
+        balance:500,
+        cvuUS: CVUUSD
       })
       const cuentas = await Account.findAll({ //Se buscan las 2 cuentas creadas.
         where: {
@@ -62,12 +71,24 @@ server.post("/:id", async (req, res) => {
 
 
 //identificar un usuario con su cuenta
-server.get('/:email/:DNI', (req, res,) => {
-  const { email, DNI } = req.params
+server.get('/:email', (req, res,) => {
+  const { email } = req.params
   return Account.findOne({
     where: {
       email,
-      DNI
+    }
+  })
+    .then(cuenta => {
+      res.json(cuenta);
+    })
+})
+
+//Obtener todas las cuentas de un usuario
+server.get('/all/:email', (req, res,) => {
+  const { email } = req.params
+  return Account.findAll({
+    where: {
+      email,
     }
   })
     .then(cuenta => {
@@ -118,7 +139,7 @@ server.put('/recarga/:id', async (req, res, next) => {
     let { monto } = req.body;
     const account = await Account.findByPk(id); //Busca la cuenta por ID.
     await account.update({
-      balance: (Number(account.balance) + Number(monto))  // Le suma el Monto.
+      balance: account.balance + monto // Le suma el Monto.
     })
     res.status(200).json(account); // Devuelve la cuenta actualizada.
   }

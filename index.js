@@ -8,7 +8,7 @@ conn.sync({ force: true}).then(() => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
-/* 
+/*
  User.create({
   "email": "admin@admin.com",
   "password": "1234",
