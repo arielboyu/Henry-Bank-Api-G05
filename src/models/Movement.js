@@ -7,17 +7,28 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM("envio", "recibo"),
       allowNull: false,
     },
-    description:{
+    name: {
       type:DataTypes.TEXT,
       allowNull:false
+    },
+    movementType: {
+      type: DataTypes.ENUM("Compra", "Transferencia", "Carga", "Pago"),
+      allowNull: false
+    },
+    currency: {
+      type: DataTypes.ENUM("dolares", "pesos"),
+      allowNull: false
     },
     amount:{
       type:DataTypes.TEXT,
       allowNull:false
     },
-    contactId:{
+    description:{
       type:DataTypes.TEXT,
-      allowNull:false
+      defaultValue: 'No hay descripción'
+    },
+    contactId:{
+      type:DataTypes.TEXT
     },
   });
 };
