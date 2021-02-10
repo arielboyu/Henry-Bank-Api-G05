@@ -55,14 +55,18 @@ conn.sync({ force: true }).then(() => {
       "contactId": "3" 
     });
 
-    await Movement.create({   //Crea el movimiento del que recibe.
-      "userId": "1",
-      "accountId": "2",
-      "type": "recibo",
-      "description": "Comprate algo lindo",
-      "amount": "500",
-      "contactId": "2",
-    })
+    await Movement.create({
+			//Crea el movimiento del que recibe.
+			"userId"       : '1',
+			"accountId"    : '2',
+			"name"         : 'Cualquier',
+			"type"         : 'recibo',
+			"movementType" : 'Compra',
+			"currency"     : 'pesos',
+			"description"  : 'Comprate algo lindo',
+			"amount"       : '500',
+			"contactId"    : '2'
+		});
 
 
     await User.create({
@@ -112,14 +116,18 @@ conn.sync({ force: true }).then(() => {
       "contactId": "3" 
     });
 
-    await Movement.create({   //Crea el movimiento del que recibe.
-      "userId": "2",
-      "accountId": "4",
-      "type": "envio",
-      "description": "Comprate algo lindo",
-      "amount": "500",
-      "contactId": "1",
-    })
+    await Movement.create({
+			//Crea el movimiento del que recibe.
+			userId       : '2',
+			accountId    : '4',
+			name         : 'Cualquier',
+			type         : 'envio',
+			movementType : 'Transferencia',
+			currency     : 'pesos',
+			description  : 'Comprate algo lindo',
+			amount       : '500',
+			contactId    : '1'
+		});
 
     await User.create({
       "email": "apu@nahasa.com",
