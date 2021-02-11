@@ -10,7 +10,7 @@ conn.sync({ force: true }).then(() => {
 
     await User.create({
       "email": "admin@admin.com",
-      "password": "1234",
+      "password": "Qwerty1234",
       "typeDNI": "dni",
       "DNI": "1234563",
       "firstName": "Maggie",
