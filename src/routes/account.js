@@ -100,30 +100,30 @@ server.get('/all/:email', (req, res,) => {
 //enviar/recibir dinero
 server.put('/:id', async (req, res) => {
   const { id } = req.params;
-  let { contactId, monto, tipo } = req.body;
+  let { contactId, amount, currency } = req.body;
 
   const sender = await Account.findOne({     //Busca la cuenta de quien envia.
-    where: { userId: id, tipo }
+    where: { userId: id, tipo: currency }
   })
   await Account.update(                       // Le resta el monto
     {
-      balance: (Number(sender.balance) - Number(monto))
+      balance: (Number(sender.balance) - Number(amount))
     },
-    { where: { userId: id, tipo } }
+    { where: { userId: id, tipo: currency } }
   )
 
   const reciber = await Account.findOne({    // Busca la cuenta de quien recibe.
-    where: { userId: contactId, tipo }       // tipo es dolares o pesos
+    where: { userId: contactId, tipo: currency }       // tipo es dolares o pesos
   })
   await Account.update(                      // Le suma el Monto.
     {
-      balance: (Number(reciber.balance) + Number(monto))
+      balance: (Number(reciber.balance) + Number(amount))
     },
-    { where: { userId: contactId, tipo } }
+    { where: { userId: contactId, tipo: currency } }
   )
 
   await Account.findOne({         //Busca la cuenta actualizada de quien envió.
-    where: { userId: id, tipo }
+    where: { userId: id, tipo: currency }
   })
     .then((updatedUser) => {
       res.status(201).json(updatedUser) //responde con la cuenta actualizada.

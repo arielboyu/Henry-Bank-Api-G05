@@ -45,14 +45,16 @@ conn.sync({ force: true }).then(() => {
       "alias": "Daley",
       "email": "dailytinkerer@gmail.com",
       "userId": "1",
-      "contactId": "2" 
+      "contactId": "2", 
+      "mobile":32543548 
     });
 
     await Contact.create({
       "alias": "Apu",
       "email": "apu@nahasa.com",
       "userId": "1",
-      "contactId": "3" 
+      "contactId": "3",
+      "mobile": "3265748", 
     });
 
     await Movement.create({
@@ -153,14 +155,16 @@ conn.sync({ force: true }).then(() => {
       "alias": "admin",
       "email": "admin@admin.com",
       "userId": "2",
-      "contactId": "1" 
+      "contactId": "1",
+      "mobile": "3216548", 
     });
 
     await Contact.create({
       "alias": "Apu",
       "email": "apu@nahasa.com",
       "userId": "2",
-      "contactId": "3" 
+      "contactId": "3",
+      "mobile": "3265748", 
     });
 
     await Movement.create({
@@ -213,7 +217,8 @@ conn.sync({ force: true }).then(() => {
       "alias": "admin",
       "email": "admin@admin.com",
       "userId": "3",
-      "contactId": "1" 
+      "contactId": "1", 
+      "mobile": "3216548"
     });
 
     await Movement.create({
