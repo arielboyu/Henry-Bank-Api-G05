@@ -10,5 +10,8 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    mobile: {
+      type: DataTypes.INTEGER,
+    }
   });
 };
