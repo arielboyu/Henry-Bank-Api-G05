@@ -11,6 +11,7 @@ server.post('/:id', async (req, res, next) => {
       alias: contact.firstName + " " + contact.lastName,  // Lo nombra por defecto.
       email: contact.email,
       userId: id,
+      mobile: contact.mobile,
       contactId
     });
     res.status(201).json(result);   //devuelve el contacto creado.

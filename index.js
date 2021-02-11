@@ -10,7 +10,7 @@ conn.sync({ force: true }).then(() => {
 
     await User.create({
       "email": "admin@admin.com",
-      "password": "Qwerty1234",
+      "password": "Qwerty123",
       "typeDNI": "dni",
       "DNI": "1234563",
       "firstName": "Maggie",
@@ -45,33 +45,82 @@ conn.sync({ force: true }).then(() => {
       "alias": "Daley",
       "email": "dailytinkerer@gmail.com",
       "userId": "1",
-      "contactId": "2" 
+      "contactId": "2", 
+      "mobile":32543548 
     });
 
     await Contact.create({
       "alias": "Apu",
       "email": "apu@nahasa.com",
       "userId": "1",
-      "contactId": "3" 
+      "contactId": "3",
+      "mobile": "3265748", 
     });
 
     await Movement.create({
-			//Crea el movimiento del que recibe.
 			"userId"       : '1',
 			"accountId"    : '2',
 			"name"         : 'Cualquier',
-			"type"         : 'recibo',
-			"movementType" : 'Compra',
+			"type"         : 'envio',
+			"movementType" : 'Transferencia',
 			"currency"     : 'pesos',
 			"description"  : 'Comprate algo lindo',
 			"amount"       : '500',
 			"contactId"    : '2'
 		});
 
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '1',
+			"name"         : 'Aysa',
+			"type"         : 'envio',
+			"movementType" : 'Pago',
+			"currency"     : 'pesos',
+			"description"  : 'Factura N° 4-456151',
+			"amount"       : '324',
+			"contactId"    : '0'
+		});
+
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '2',
+			"name"         : 'Transferencia a Apu',
+			"type"         : 'envio',
+			"movementType" : 'Transferencia',
+			"currency"     : 'pesos',
+			"description"  : 'Lo que te debía.',
+			"amount"       : '230',
+			"contactId"    : '3'
+		});
+
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '2',
+			"name"         : 'Carga en RapiPago',
+			"type"         : 'recibo',
+			"movementType" : 'Carga',
+			"currency"     : 'dolares',
+			"description"  : 'Recarga de saldo',
+			"amount"       : '1500',
+			"contactId"    : '0'
+		});
+
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '2',
+			"name"         : 'Transferencia de Apu',
+			"type"         : 'recibo',
+			"movementType" : 'Transferencia',
+			"currency"     : 'dolares',
+			"description"  : 'Recarga de saldo',
+			"amount"       : '350',
+			"contactId"    : '0'
+		});
+
 
     await User.create({
       "email": "dailytinkerer@gmail.com",
-      "password": "1234",
+      "password": "Qwerty123",
       "typeDNI": "dni",
       "DNI": "16577763",
       "firstName": "Daley",
@@ -106,14 +155,16 @@ conn.sync({ force: true }).then(() => {
       "alias": "admin",
       "email": "admin@admin.com",
       "userId": "2",
-      "contactId": "1" 
+      "contactId": "1",
+      "mobile": "3216548", 
     });
 
     await Contact.create({
       "alias": "Apu",
       "email": "apu@nahasa.com",
       "userId": "2",
-      "contactId": "3" 
+      "contactId": "3",
+      "mobile": "3265748", 
     });
 
     await Movement.create({
@@ -166,8 +217,21 @@ conn.sync({ force: true }).then(() => {
       "alias": "admin",
       "email": "admin@admin.com",
       "userId": "3",
-      "contactId": "1" 
+      "contactId": "1", 
+      "mobile": "3216548"
     });
+
+    await Movement.create({
+			"userId"       : '3',
+			"accountId"    : '5',
+			"name"         : 'Transferencia a Apu',
+			"type"         : 'recibo',
+			"movementType" : 'Transferencia',
+			"currency"     : 'pesos',
+			"description"  : 'Lo que te debía.',
+			"amount"       : '230',
+			"contactId"    : '1'
+		});
 
   });
 });

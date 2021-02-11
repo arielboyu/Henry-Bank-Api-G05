@@ -92,20 +92,20 @@ server.post("/envio/:id", async (req, res) => {
 //Crea un movimiento de carga
 server.post("/carga/:id", async (req, res) => {
   const { id } = req.params;
-  const { description, amount, currency } = req.body;
+ // const { description, amount, currency } = req.body;
   try {
     const account = await Account.findOne({
-      where: { userId: id, tipo: currency }
+      where: { userId: id, tipo: "dolares" }
     })
     const movimiento = await Movement.create({
       userId: id,
-      name: "Carga en red de cobranzas",
-      accountId: account.id,
+      name: "Rapipago",
+      accountId: 2,
       type: "recibo",
       movementType: "Carga",
-      currency,
-      description,
-      amount
+      currency: "dolares",
+      description: "Recarga de saldo Rapipgo",
+      amount: "1300"
     })
     res.status(201).json(movimiento) //Retorna el movimiento
 
