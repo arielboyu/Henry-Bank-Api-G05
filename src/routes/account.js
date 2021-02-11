@@ -135,9 +135,10 @@ server.put('/:id', async (req, res) => {
 //recargar dinero.
 server.put('/recarga/:id', async (req, res, next) => {
   try {
-    const { id } = req.params;
-    let { monto } = req.body;
-    const account = await Account.findByPk(id); //Busca la cuenta por ID.
+   // const { id } = req.params;
+   // let { monto } = req.body;
+   let monto = 1300
+    const account = await Account.findByPk(2); //Busca la cuenta por ID.
     await account.update({
       balance: account.balance + monto // Le suma el Monto.
     })
