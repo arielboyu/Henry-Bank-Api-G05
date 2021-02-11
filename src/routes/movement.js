@@ -117,14 +117,17 @@ server.post("/carga/:id", async (req, res) => {
 //obtener los movimientos de un usuario
 server.get('/:userId', (req, res,) => {
   const { userId } = req.params
-  return Account.findOne({
+  return Movement.findAll({
     where: {
       userId
     }
   })
-    .then(movimientos => {
-      res.json(movimientos);
-    })
+  .then(movimientos => {
+    res.json(movimientos);
+  })
+/*   .catch(error => {
+    res.send(error)
+  }) */
 })
 
 module.exports = server;

@@ -1,4 +1,5 @@
 const server = require("express").Router();
+const axios = require('axios');
 const { Account, User } = require('../db.js');
 
 
@@ -131,6 +132,62 @@ server.put('/:id', async (req, res) => {
     })
 });
 
+//cambio de dinero
+server.put('/cambio/:cotizacion/:tipo/:monto/:email', async (req, res, next) => {
+  const { cotizacion, email, monto, tipo } = req.params;
+
+  try {
+    
+    let valor = tipo === 'compra' ? monto / cotizacion : monto * cotizacion;
+
+    console.log(valor)
+    
+    const accountPesos = await Account.findOne({
+      where: {
+        email,
+        tipo: 'pesos'
+      }
+    })
+    
+    const accountDolar = await Account.findOne({
+      where: {
+        email,
+        tipo: 'dolares'
+      }
+    })
+
+    if (tipo === 'compra') {
+      if (accountPesos.balance >= monto) {
+        await accountDolar.update({
+          balance: accountDolar.balance + parseInt(valor.toFixed(2))
+        }) //FUNCIONA
+
+        await accountPesos.update({
+          balance: accountPesos.balance - parseInt(monto)
+        }) //FUNCIONA
+      } else {
+        alert("No tiene saldo suficiente")
+      }
+    }
+
+    if (tipo === 'venta') {
+      if (accountDolar.balance >= monto) {
+        await accountPesos.update({
+          balance: accountPesos.balance + parseInt(valor.toFixed(2))
+        }) //FUNCIONA
+
+        await accountDolar.update({
+          balance: accountDolar.balance - parseInt(monto)
+        }) //FUNCIONA
+      } else {
+        alert("No tiene saldo suficiente")
+      }
+    }
+  }
+  catch(error) {
+    console.log(error)
+  }
+})
 
 //recargar dinero.
 server.put('/recarga/:id', async (req, res, next) => {
