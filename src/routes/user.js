@@ -1,12 +1,13 @@
 const server = require('express').Router();
-const { User,Account } = require('../db.js');
+const { User,Account, Movement, Contact } = require('../db.js');
 const multer = require('multer');
+
 
 //obtener todos los usuarios
 server.get('/', (req, res) => {
 	/* if (req.user) { */
 		return User.findAll({
-			include : { all: true }
+		//	include : { all: true }
 		}).then((users) => {
 			res.send(users);
 		});
@@ -36,7 +37,7 @@ server.get('/:id', async (req, res, next) => {
 		const { id } = req.params;
 		const result = await User.findByPk(id, 
       {include :{
-        model: Account,
+       all: true
       }})
     ;
 		if (result) return res.json(result);
