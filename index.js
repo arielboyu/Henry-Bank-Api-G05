@@ -46,7 +46,7 @@ conn.sync({ force: true }).then(() => {
       "email": "dailytinkerer@gmail.com",
       "userId": "1",
       "contactId": "2", 
-      "mobile":32543548 
+      "mobile":"32543548" 
     });
 
     await Contact.create({
@@ -336,5 +336,4 @@ conn.sync({ force: true }).then(() => {
 
   });
 });
-
 
