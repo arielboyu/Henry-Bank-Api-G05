@@ -57,6 +57,38 @@ conn.sync({ force: true }).then(() => {
       "mobile": "326-5748", 
     });
 
+    await Contact.create({
+      "alias": "Bart",
+      "email": "bart@simpsons.com",
+      "userId": "1",
+      "contactId": "4",
+      "mobile": "3265444", 
+    });
+
+    await Contact.create({
+      "alias": "Marge",
+      "email": "marge@bouvier.com",
+      "userId": "1",
+      "contactId": "5",
+      "mobile": "3265874", 
+    });
+
+    await Contact.create({
+      "alias": "Homero",
+      "email": "homero@simpsons.com",
+      "userId": "1",
+      "contactId": "6",
+      "mobile": "3265654", 
+    });
+
+    await Contact.create({
+      "alias": "Lisa",
+      "email": "lisa@simpsons.com",
+      "userId": "1",
+      "contactId": "7",
+      "mobile": "3265111", 
+    });
+
     await Movement.create({
 			"userId"       : '1',
 			"accountId"    : '2',
@@ -232,6 +264,75 @@ conn.sync({ force: true }).then(() => {
 			"amount"       : '230',
 			"contactId"    : '1'
 		});
+
+    await User.create({
+      "email": "bart@simpsons.com",
+      "password": "1234",
+      "typeDNI": "dni",
+      "DNI": "12334564",
+      "firstName": "Bart",
+      "lastName": "Simpsons",
+      "birthdate": "1987-03-28",
+      "mobile": "3265444",
+      "street": "Av siempreviva",
+      "streetNumber": "1234",
+      "city": "Springfield",
+      "province": "Masachusets",
+      "Country": "USA",
+      "photoURL": ""
+    });
+
+    await User.create({
+      "email": "marge@bouvier.com",
+      "password": "1234",
+      "typeDNI": "dni",
+      "DNI": "3456487",
+      "firstName": "Marge",
+      "lastName": "Bouvier",
+      "birthdate": "1958-03-28",
+      "mobile": "3265874",
+      "street": "Av siempreviva",
+      "streetNumber": "1234",
+      "city": "Springfield",
+      "province": "Masachusets",
+      "Country": "USA",
+      "photoURL": ""
+    });
+
+    await User.create({
+      "email": "homero@simpsons.com",
+      "password": "1234",
+      "typeDNI": "dni",
+      "DNI": "15687425",
+      "firstName": "Homero",
+      "lastName": "Simpsons",
+      "birthdate": "1958-03-28",
+      "mobile": "3265654",
+      "street": "Av siempreviva",
+      "streetNumber": "1234",
+      "city": "Springfield",
+      "province": "Masachusets",
+      "Country": "USA",
+      "photoURL": ""
+    });
+
+    await User.create({
+      "email": "lisa@simpsons.com",
+      "password": "1234",
+      "typeDNI": "dni",
+      "DNI": "226874235",
+      "firstName": "Lisa",
+      "lastName": "Simpsons",
+      "birthdate": "1990-11-28",
+      "mobile": "3265111",
+      "street": "Av siempreviva",
+      "streetNumber": "1234",
+      "city": "Springfield",
+      "province": "Masachusets",
+      "Country": "USA",
+      "photoURL": ""
+    });
+
 
   });
 });
