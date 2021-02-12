@@ -144,8 +144,80 @@ conn.sync({ force: true }).then(() => {
 			"type"         : 'recibo',
 			"movementType" : 'Transferencia',
 			"currency"     : 'dolares',
-			"description"  : 'Recarga de saldo',
+			"description"  : 'Feliz cumpleaños !',
 			"amount"       : '350',
+			"contactId"    : '3'
+		});
+
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '1',
+			"name"         : 'Transferencia de Homero',
+			"type"         : 'recibo',
+			"movementType" : 'Transferencia',
+			"currency"     : 'pesos',
+			"description"  : 'Felicidades !',
+			"amount"       : '1000',
+			"contactId"    : '6'
+		});
+
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '1',
+			"name"         : 'Fibertel',
+			"type"         : 'envio',
+			"movementType" : 'Pago',
+			"currency"     : 'dolares',
+			"description"  : 'factura a-2-432523',
+			"amount"       : '950',
+			"contactId"    : '0'
+		});
+
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '1',
+			"name"         : 'Claro',
+			"type"         : 'envio',
+			"movementType" : 'Pago',
+			"currency"     : 'pesos',
+			"description"  : 'factura c-2-432245',
+			"amount"       : '799',
+			"contactId"    : '0'
+		});
+
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '1',
+			"name"         : 'YPF',
+			"type"         : 'envio',
+			"movementType" : 'pago',
+			"currency"     : 'dolares',
+			"description"  : '14/02/2021 - ruta 54 km 35',
+			"amount"       : '2500',
+			"contactId"    : '0'
+		});
+
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '2',
+			"name"         : 'Carga en RapiPago',
+			"type"         : 'recibo',
+			"movementType" : 'Carga',
+			"currency"     : 'dolares',
+			"description"  : 'Recarga de saldo',
+			"amount"       : '150',
+			"contactId"    : '0'
+		});
+
+    await Movement.create({
+			"userId"       : '1',
+			"accountId"    : '1',
+			"name"         : 'Carga en RapiPago',
+			"type"         : 'recibo',
+			"movementType" : 'Carga',
+			"currency"     : 'dolares',
+			"description"  : 'Recarga de saldo',
+			"amount"       : '2500',
 			"contactId"    : '0'
 		});
 
@@ -282,6 +354,23 @@ conn.sync({ force: true }).then(() => {
       "photoURL": ""
     });
 
+    await Account.create({
+      "userId": "4",
+      "email": "bart@simpsons.com",
+      "tipo": "pesos",
+      "balance": "2500",
+      "cvu": "2222220000222226952874"
+    })
+
+    await Account.create({
+      "userId": "4",
+      "email": "bart@simpsons.com",
+      "tipo": "dolares",
+      "balance": "5300",
+      "cvuUS": "3333331111333336952874"
+    })
+    
+
     await User.create({
       "email": "marge@bouvier.com",
       "password": "1234",
@@ -298,6 +387,22 @@ conn.sync({ force: true }).then(() => {
       "Country": "USA",
       "photoURL": ""
     });
+
+    await Account.create({
+      "userId": "5",
+      "email": "marge@bouvier.com",
+      "tipo": "pesos",
+      "balance": "2500",
+      "cvu": "2222220000222226952444"
+    })
+
+    await Account.create({
+      "userId": "5",
+      "email": "marge@bouvier.com",
+      "tipo": "dolares",
+      "balance": "5300",
+      "cvuUS": "3333331111333336952444"
+    })
 
     await User.create({
       "email": "homero@simpsons.com",
@@ -316,6 +421,22 @@ conn.sync({ force: true }).then(() => {
       "photoURL": ""
     });
 
+    await Account.create({
+      "userId": "6",
+      "email": "homero@simpsons.com",
+      "tipo": "pesos",
+      "balance": "300",
+      "cvu": "2222220000222226952741"
+    })
+
+    await Account.create({
+      "userId": "6",
+      "email": "homero@simpsons.com",
+      "tipo": "dolares",
+      "balance": "10",
+      "cvuUS": "3333331111333336952741"
+    })
+
     await User.create({
       "email": "lisa@simpsons.com",
       "password": "1234",
@@ -332,6 +453,22 @@ conn.sync({ force: true }).then(() => {
       "Country": "USA",
       "photoURL": ""
     });
+
+    await Account.create({
+      "userId": "7",
+      "email": "lisa@simpsons.com",
+      "tipo": "pesos",
+      "balance": "10000",
+      "cvu": "2222220000222226955513"
+    })
+
+    await Account.create({
+      "userId": "7",
+      "email": "lisa@simpsons.com",
+      "tipo": "dolares",
+      "balance": "50010",
+      "cvuUS": "3333331111333336955513"
+    })
 
 
   });

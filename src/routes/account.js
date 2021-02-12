@@ -105,6 +105,7 @@ server.put('/:id', async (req, res) => {
   const sender = await Account.findOne({     //Busca la cuenta de quien envia.
     where: { userId: id, tipo: currency }
   })
+  if (sender.balance >= amount) {
   await Account.update(                       // Le resta el monto
     {
       balance: (Number(sender.balance) - Number(amount))
@@ -130,6 +131,9 @@ server.put('/:id', async (req, res) => {
     }).catch(e => {
       res.status(400).json({ MjsError: "Llene los campos obligatorios" })
     })
+  } else {
+    res.status(401).json({ MjsError: "No posee fondos suficientes" })
+  }
 });
 
 //cambio de dinero
