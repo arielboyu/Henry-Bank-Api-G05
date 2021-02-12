@@ -16,7 +16,7 @@ conn.sync({ force: true }).then(() => {
       "firstName": "Maggie",
       "lastName": "Simpson",
       "birthdate": "1988-01-14",
-      "mobile": "3216548",
+      "mobile": "321-6548",
       "street": "Av siempreviva",
       "streetNumber": "1234",
       "city": "Springfield",
@@ -54,7 +54,7 @@ conn.sync({ force: true }).then(() => {
       "email": "apu@nahasa.com",
       "userId": "1",
       "contactId": "3",
-      "mobile": "3265748", 
+      "mobile": "326-5748", 
     });
 
     await Movement.create({
@@ -126,7 +126,7 @@ conn.sync({ force: true }).then(() => {
       "firstName": "Daley",
       "lastName": "Tinky",
       "birthdate": "1987-01-23",
-      "mobile": "32543548",
+      "mobile": "325-43548",
       "street": "Av siempreviva",
       "streetNumber": "1234",
       "city": "Springfield",
