@@ -16,7 +16,7 @@ conn.sync({ force: true }).then(() => {
       "firstName": "Maggie",
       "lastName": "Simpson",
       "birthdate": "1988-01-14",
-      "mobile": "321-6548",
+      "mobile": "3216548",
       "street": "Av siempreviva",
       "streetNumber": "1234",
       "city": "Springfield",
@@ -46,7 +46,7 @@ conn.sync({ force: true }).then(() => {
       "email": "dailytinkerer@gmail.com",
       "userId": "1",
       "contactId": "2", 
-      "mobile":32543548 
+      "mobile":"32543548" 
     });
 
     await Contact.create({
@@ -54,7 +54,7 @@ conn.sync({ force: true }).then(() => {
       "email": "apu@nahasa.com",
       "userId": "1",
       "contactId": "3",
-      "mobile": "326-5748", 
+      "mobile": "3265748", 
     });
 
     await Contact.create({
@@ -158,7 +158,7 @@ conn.sync({ force: true }).then(() => {
       "firstName": "Daley",
       "lastName": "Tinky",
       "birthdate": "1987-01-23",
-      "mobile": "325-43548",
+      "mobile": "32543548",
       "street": "Av siempreviva",
       "streetNumber": "1234",
       "city": "Springfield",
